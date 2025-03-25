@@ -1,0 +1,646 @@
+/**
+ * The MECO presentation theme, based on the KUL theme.
+ *
+ * This stylesheet consists of the following parts:
+ *  - Color definitions
+ *  - Font definitions
+ *  - Adaptations to reveal.js/kul-styles
+ *  - Additional styles
+ *
+ * Guidelines to keep this nice:
+ *  - no tabs, but two whitespace characters
+ *  - add a few words before every style tag to explain its use
+ *  - put styles in the correct part (as indicated above)
+ *  - closing tags get a new line, please
+ *  - for the rest see the existent code
+ *
+ * Copyright (C) 2016-2017  Armin Steinhauser
+ */
+
+/* COLOR DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+/* These are the official KUL colors, see KUL style guide. */
+:root {
+    --bck_opacity: 0.15;
+    --bck_opacity_high: 0.05;
+    --my_blue: rgb(25, 94, 175);
+    --my_red: rgb(217, 26, 40);
+    --my_orange: rgb(236, 70, 19);
+    --my_purple: rgb(70, 10, 123);
+    --my_green: rgb(117, 162, 54);
+    --my_lightgreen: rgb(182, 233, 116);
+    --my_lightblue: rgb(117, 170, 235);
+    --my_lightgray: rgb(180, 180, 180);
+    --my_lightmgnt: rgb(236, 139, 207);
+    --my_gray: rgb(54, 54, 54);
+    --tv_color: brown;
+    --cadrocolor: var(--my_blue);
+    --accent-color: var(--r-link-color);
+}
+
+/* FONT DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+/* ADAPTATIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+.centered-div {
+    display: grid;
+    place-items: center;
+}
+
+.reveal .right {
+    float: right;
+}
+
+.reveal .iframe-visualization {
+    height: 450px !important;
+}
+
+.no-margin-top {
+    margin-top: 0 !important;
+}
+
+.todo {
+    color: var(--my_red);
+    padding: 5px;
+    border: solid;
+    border-radius: 5px;
+}
+
+/* Adapting the overall reveal style */
+.reveal {
+    font-size: 25px;
+    /* padding-left: 10%; */
+}
+
+/* Make text on slides float left by default */
+.reveal .slides {
+    text-align: left;
+}
+
+/* General styles for all headings */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    margin: 0 0 15px 0;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.center-text {
+    text-align: center;
+}
+
+/* Different style for main headings */
+.reveal h1 {
+    /*  font-size: 1.6em;*/
+    font-size: 1.7em;
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding: 0px 40px;
+}
+
+/* Another heading, smaller and black */
+.reveal h2 {
+    /*  font-size: 1.6em;*/
+    font-size: 1.2em;
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding: 10px 10px;
+}
+
+/* Increase intentation of lists */
+.reveal ul,
+.reveal ol,
+.reveal dl {
+    margin-left: 1em;
+}
+
+.reveal li::marker {
+    color: #007acc;
+    /* Customize the bullet color */
+}
+
+/* Adapt style of slide numbers */
+.reveal .slide-number {
+    font-size: 16px;
+    line-height: 1;
+    position: absolute;
+    display: block;
+    right: 50%;
+    bottom: 1%;
+    padding: 0px;
+    color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.reveal table tr.fragment:not(.visible) td {
+    border-bottom: none;
+}
+
+hr {
+    height: 2px;
+    border-width: 0;
+    color: gray;
+    background-color: gray;
+    /* width:90% */
+}
+
+.reveal .align-right {
+    align: center;
+}
+
+.reveal .centered {
+    text-align: center;
+}
+
+.reveal li {
+    margin: 20px 0;
+}
+
+.reveal .sub-header-separator {
+    margin-top: 2em;
+}
+
+.reveal .half-separator {
+    margin-top: 0.5em;
+}
+
+.reveal .block-equation {
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+    text-align: center;
+}
+
+/* Reset image style */
+.reveal img {
+    max-width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* flips and image (works for GIFs) */
+.reveal #flipped_roboto,
+.reveal #flipped_phd,
+.reveal #flipped_roboto_cautious {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    /* IE8-9 support */
+}
+
+.reveal .bold {
+    font-weight: bold;
+}
+
+.reveal .italix {
+    font-style: italic;
+}
+
+.reveal .footnote {
+    padding-bottom: 7px;
+    padding-top: 5px;
+    text-align: left;
+    bottom: 0px;
+    /*top: 110%;*/
+    width: 100%;
+    position: fixed;
+    font-size: 0.6em;
+    padding-left: 0px;
+    color: var(--my_gray);
+    overflow: visible;
+}
+
+.spaced {
+    flex-wrap: ;
+    justify-content: space-between !important;
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 100vh; [> Set the container to the full viewport height for vertical centering <]*/
+}
+
+.col-reg {
+    flex: 1;
+}
+
+.col-thin {
+    flex: 0.5;
+}
+
+.col-wide {
+    flex: 2;
+}
+
+.small {
+    font-size: smaller;
+}
+
+.larger {
+    font-size: larger;
+}
+
+/* ADDITIONAL STYLES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+/* Class to make a slide clean, i.e. remove the logo, bar, etc. */
+.plain-slide #bar,
+.plain-slide #logo-container,
+.plain-slide .slide-number,
+.plain-slide .controls,
+.plain-slide .progress {
+    display: none;
+}
+
+/* Element containing the KUL logo */
+#logo-container {
+    position: absolute;
+    height: 5%;
+    top: 92%;
+    right: 5%;
+    bottom: 3%;
+    left: 0%;
+    background-image: url('../../kul-theme/kuleuven.png');
+    /* TODO: use SVG */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+/* Semi-transparent background box for heading */
+.reveal h1.box_header {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* A list that's less dense than the default one */
+.reveal ul.stretched li {
+    margin-bottom: 1em;
+}
+
+/* A list that's more dense than the default one */
+.reveal ol.squashed li {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.reveal ul.squashed li {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+/* Class for icons ('background_apps.svg') to not collide with bottom bar */
+html.icon-bg div.slide-background.present {
+    left: 85%;
+    width: 15%;
+    height: 85%;
+    background-size: contain;
+    background-position: center right;
+}
+
+/* Class for icons ('background_apps.svg') to not collide with bottom bar */
+html.fig-bg div.slide-background.present {
+    left: 20%;
+    width: 70%;
+    height: 95%;
+    background-size: contain;
+    background-position: bottom right;
+}
+
+
+/* Extending reveal:
+   * 'replace' only takes space when current-fragment
+   */
+.reveal section .fragment.replace {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all .2s ease;
+    transition: all .2s ease;
+    display: none;
+}
+
+.reveal section .fragment.replace.current-fragment {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+}
+
+.reveal section .fragment.replace.visible:not(.current-fragment) {
+    opacity: 1;
+    /*visibility: hidden;*/
+    visibility: inherit;
+    display: none;
+}
+
+.reveal section .fragment.replace:last-of-type {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+}
+
+.reveal section .fragment.replace:last-of-type.visible {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+}
+
+.reveal section .fragment.replace:first-of-type {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+}
+
+.reveal section .fragment.replace:first-of-type.visible {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+}
+
+/* TODO include people/portraits in HTML, not on the SVG */
+.reveal involved {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 15%;
+    text-align: right;
+}
+
+.reveal involved img {
+    width: auto;
+    margin-bottom: 2px;
+    border-radius: 50%;
+    border: 2px solid #116F8A;
+    padding: 4px;
+}
+
+.reveal .hint::before {
+    content: "💡";
+    margin-right: 5pt;
+    vertical-align: middle;
+}
+
+.reveal .hint {
+    color: var(--my_blue);
+    font-size: smaller;
+}
+
+.reveal .emph {
+    background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.reveal .blue {
+    color: var(--my_blue);
+}
+
+.reveal .green {
+    color: var(--my_green);
+}
+
+.reveal .red {
+    color: var(--my_red);
+}
+
+.reveal .tiny {
+    font-size: x-small;
+}
+
+.reveal .smaller {
+    font-size: smaller;
+}
+
+.reveal .hidden {
+    display: none;
+}
+
+.reveal .align-right {
+    text-align: right;
+}
+
+.reveal .problem {
+    color: var(--my_red);
+    font-size: smaller;
+    margin-top: 1pt;
+    margin-bottom: 1pt;
+}
+
+.reveal .problem::before {
+    content: "\26A0";
+    margin-right: 5pt;
+    vertical-align: middle;
+}
+
+.reveal .benefit {
+    color: var(--my_green);
+    font-size: smaller;
+    margin-top: 1pt;
+    margin-bottom: 1pt;
+}
+
+.reveal .benefit::before {
+    content: "✓";
+    margin-right: 5pt;
+    /*font-size: small;*/
+    vertical-align: middle;
+}
+
+.reveal .box {
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 5pt;
+    /* position: absolute; */
+    /* top: 150px; */
+    /* left: 16%; */
+    padding: 10pt;
+    margin: 5pt;
+    font-size: smaller;
+    width: fit-content;
+    min-width: 200px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.arrow {
+    transform: translateY(100px);
+    vertical-align: middle;
+    font-size: 25px;
+    color: var(--my_lightblue);
+}
+
+.reveal pre {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin: 0px auto;
+    /*margin: 0px;*/
+    text-align: left;
+    font-size: 0.8em;
+    font-family: monospace;
+    line-height: 1.2em;
+    word-wrap: break-word;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 1);
+}
+
+.reveal .rmrk {
+    font-size: smaller;
+    opacity: 50%;
+}
+
+.reveal .rmrk::before {
+    content: "(";
+}
+
+.reveal .rmrk::after {
+    content: ")";
+}
+
+.reveal .muted {
+    opacity: 0.5;
+}
+
+.reveal code {
+    font-family: monospace;
+    font-size: smaller;
+    /* width:80%; */
+    /* text-transform: none;*/
+}
+
+.reveal pre code {
+    display: block;
+    /* padding: 0px; */
+    overflow: auto;
+    max-height: 90%;
+    word-wrap: normal;
+}
+
+.reveal sup {
+    vertical-align: super;
+    font-size: 80%;
+}
+
+.reveal sub {
+    vertical-align: sub;
+    font-size: 80%;
+}
+
+
+.keyword {
+    color: var(--my_lightblue);
+}
+
+.code_comment {
+    color: var(--my_lightmgnt);
+}
+
+.code_static {
+    color: var(--my_lightgreen);
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Style for the caption */
+.reveal .caption {
+    padding: 8px 15px;
+    /* Padding around the caption text */
+    font-size: smaller;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0.8;
+    /* Opacity for a semi-transparent background */
+}
+
+.reveal .sout {
+    text-decoration: line-through;
+}
+
+.reveal .fragment.blur {
+    opacity: 1;
+    visibility: inherit;
+}
+
+.reveal .fragment.blur.visible {
+    filter: blur(2px);
+}
+
+.reveal .fragment.blur.current-fragment {
+    filter: blur(2px);
+}
+
+
+
+.reveal .fragment.highlight-emph,
+.reveal .fragment.highlight-perfgreen,
+.reveal .fragment.highlight-current-perfgreen,
+.reveal .fragment.highlight-safeblue,
+.reveal .fragment.highlight-current-safeblue {
+    opacity: 1;
+    visibility: inherit;
+}
+
+.reveal .fragment.highlight-emph.visible {
+    background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.reveal .fragment.highlight-emph.current-fragment {
+    background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.reveal .fragment.highlight-safeblue.visible {
+    color: #00407a;
+}
+
+.reveal .fragment.highlight-perfgreen.visible {
+    color: #788525;
+}
+
+.reveal .fragment.highlight-safeblue.current-fragment {
+    color: #00407a;
+}
+
+.reveal .fragment.highlight-perfgreen.current-fragment {
+    color: #788525;
+}
+
+
+.inline-list {
+    display: inline-flex;
+}
+
+.inline-list>:not(:last-child)::after {
+    content: "|";
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--my_lightgray);
+}
+
+.accent {
+    color: var(--accent-color);
+
+}

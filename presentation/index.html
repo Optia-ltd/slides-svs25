@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title id="title"></title>
+
+    <link type="text/css" rel="stylesheet" href="dist/reset.css">
+    <link type="text/css" rel="stylesheet" href="dist/reveal.css">
+    <link type="text/css" rel="stylesheet" href="dist/theme/white.css">
+    <link type="text/css" rel="stylesheet" href="css/presentation.css">
+    <link type="text/css" rel="stylesheet" href="css/benhackl.css">
+    <link type="text/css" rel="stylesheet" href="css/admonitions.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link type="text/css" rel="stylesheet" href="plugin/highlight/monokai.css">
+    <!--<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>-->
+</head>
+
+<body>
+    <!-- SLIDES -->
+    <div class="reveal">
+        <!--HEADERS-->
+        <div class="header-left">
+            <em id="title"></em>
+        </div>
+        <div class="header-right">
+            <em id="author"></em> &bullet; <span id="date"></span>
+        </div>
+        <!--//HEADERS -->
+
+        <!---------------------------SLIDES---------------------------------->
+        <div class="slides">
+            <!------------------------------SLIDES-------------------------------->
+            <section data-external="contents/title.html" data-auto-animate></section>
+        </div>
+
+        <script type="text/javascript" src="dist/reveal.js"></script>
+        <script type="text/javascript" src="plugin/math/math.js"></script>
+        <script type="text/javascript" src="plugin/notes/notes.js"></script>
+        <script type="text/javascript" src="plugin/markdown/markdown.js"></script>
+        <script type="text/javascript" src="plugin/highlight/highlight.js"></script>
+        <script type="text/javascript" src="plugin/reveald3/reveald3.js"></script>
+        <script type="text/javascript" src="js/mathjax_macros.js"></script>
+        <script type="text/javascript" src="js/custom_addons/placeholders.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+                slideNumber: 'h.v',
+                transition: 'fade', // none/fade/slide/convex/concave/zoom
+                transitionSpeed: 'fast', // default/fast/slow
+                navigationMode: 'linear',
+                mathjax3: {
+                    mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+                    loader: {load: ['[tex]/textmacros']},
+                    tex: {
+                        inlineMath: [['$', '$'], ['\\(', '\\)']],
+                        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                        macros: texMacros,
+                        packages: {'[+]': ['textmacros']}
+                    },
+                    tags: 'ams',
+                    packages: {'[+]': ['mathtools']},
+                    options: {
+                        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+                    },
+                },
+                dependencies: [{
+                    src: 'plugin/external/external.js', condition: function () {return !!document.querySelector('[data-external]');}
+                },
+                ]
+                ,
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight,
+                    RevealNotes, RevealMath.MathJax3,
+                    Reveald3
+                ]
+            });
+        </script>
+
+        <!--<script> -->
+        <!--    // utility function that excepts a fragmentshown or fragmenthidden event and returns a boolean indicating whether or not-->
+        <!--    // the fragment is a video-->
+        <!--    const isVideoFragment = (event) => event.fragment.nodeName === 'VIDEO';-->
+
+        <!--    // Listens for the 'fragmentshown' event; if the fragment being shown is a video, play the video-->
+        <!--    Reveal.addEventListener('fragmentshown', (event) => {-->
+        <!--      if (isVideoFragment(event)) {-->
+        <!--        event.fragment.play();-->
+        <!--      }-->
+        <!--    });-->
+
+        <!--    // Listens for the 'fragmenthidden' event; if the fragment being hidden is a video, pause the video-->
+        <!--    Reveal.addEventListener('fragmenthidden', (event) => {-->
+        <!--      if (isVideoFragment(event)) {-->
+        <!--        event.fragment.pause();-->
+        <!--      }-->
+        <!--    });-->
+        <!--</script>-->
+</body>
+
+</html>
