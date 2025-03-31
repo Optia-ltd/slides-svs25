@@ -1,7 +1,9 @@
 {
     "author": "Mathijs Schuurmans",
-    "title": "Title of my talk", 
-    "subtitle": "I promise it's interesting", 
-    "event": "the event of the year",
-    "location": "Somewhere in the universe"
+    "affiliation": "Optia",
+    "title": "Designing Novel Material Mixtures using Gray-Box Modelling and Numerical Optimization", 
+    "subtitle": "", 
+    "event": "Slag Valorization Symposium",
+    "location": "Leuven",
+    "date": "11/04/2025"
 }
