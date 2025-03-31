@@ -3,7 +3,7 @@
 Reveal.on('slidechanged', (event) => {
     let timeline = animate_logo();
     if (event.currentSlide.classList.contains("animate-logo")) {
-        //timeline.stop()
+        timeline.seek(0)
         timeline.play()
     } else {
         console.log("REVERTING")
