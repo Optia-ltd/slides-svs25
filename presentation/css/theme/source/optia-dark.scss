@@ -31,11 +31,14 @@ $headingFontWeight: 600;
 $logo-dark: #063a82;
 $logo-light: #97c1fbff;
 $logo-accent: #e80754;
-
+$blue: lighten($logo-dark, 30%);
 $theme-colors: (
-  "blue": lighten($logo-dark, 30%),
+  "blue": $blue,
   "lightblue": $logo-light,
   "magenta": $logo-accent,
+  "gradient2": $logo-light,
+  "gradient1": $blue,
+  "accent": $logo-accent,
 );
 
 $linkColor: $logo-light;

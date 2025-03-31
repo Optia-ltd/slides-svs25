@@ -1,8 +1,8 @@
 :root {
     --bck_opacity: 0.15;
     --bck_opacity_high: 0.05;
-    --tv_color: brown --my_blue: var(--r-theme-blue, rgb(25, 94, 175));
-    --my_blue: var(--r-theme-blue, rgb(217, 26, 40));
+    --tv_color: brown;
+    --my_blue: var(--r-theme-blue, rgb(25, 94, 175));
     --my_red: var(--r-theme-red, rgb(217, 26, 40));
     --my_orange: var(--r-theme-orange, rgb(236, 70, 19));
     --my_purple: var(--r-theme-purple, rgb(70, 10, 123));
@@ -10,11 +10,13 @@
     --my_lightgreen: var(--r-theme-lightgreen, rgb(182, 233, 116));
     --my_lightblue: var(--r-theme-lightblue, rgb(117, 170, 235));
     --my_lightgray: var(--r-theme-lightgray, rgb(180, 180, 180));
-    --my_lightmagenta: var(--r-theme-lightmagenta, rgb(236, 139, 207));
+    --my_magenta: var(--r-theme-magenta, rgb(236, 139, 207));
     --my_gray: var(--r-theme-gray, rgb(54, 54, 54));
-    ;
+    --gradient_1: var(--r-theme-gradient1, --my-blue);
+    --gradient_2: var(--r-theme-gradient2, --my-lightblue);
+    --accent-color: var(--r-theme-accent, --my_magenta);
+
     --cadrocolor: var(--my_blue);
-    --accent-color: var(--r-link-color);
 }
 
 /* FONT DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
@@ -71,6 +73,7 @@
     text-align: center;
 }
 
+
 /* Different style for main headings */
 .reveal h1 {
     /*  font-size: 1.6em;*/
@@ -97,7 +100,7 @@
 }
 
 .reveal li::marker {
-    color: #007acc;
+    color: var(--accent-color);
     /* Customize the bullet color */
 }
 
@@ -127,15 +130,11 @@ hr {
 }
 
 .reveal .align-right {
-    align: center;
+    text-align: right;
 }
 
 .reveal .centered {
     text-align: center;
-}
-
-.reveal li {
-    margin: 20px 0;
 }
 
 .reveal .sub-header-separator {
@@ -195,7 +194,6 @@ hr {
 }
 
 .spaced {
-    flex-wrap: ;
     justify-content: space-between !important;
 }
 
@@ -230,6 +228,10 @@ hr {
     font-size: x-large;
 }
 
+.xx-large {
+    font-size: xx-large;
+}
+
 .larger {
     font-size: larger;
 }
@@ -248,16 +250,10 @@ hr {
 /* Element containing the KUL logo */
 #logo-container {
     position: absolute;
-    height: 5%;
-    top: 92%;
-    right: 5%;
-    bottom: 3%;
-    left: 0%;
-    background-image: url('../../kul-theme/kuleuven.png');
-    /* TODO: use SVG */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
+    bottom: 0.5%;
+    left: 1%;
+    /*bottom: 3%;*/
+    /*left: 0%;*/
 }
 
 /* Semi-transparent background box for heading */
@@ -377,7 +373,7 @@ html.fig-bg div.slide-background.present {
 }
 
 .reveal .emph {
-    background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
+    background: linear-gradient(90deg, var(--gradient_1), var(--gradient_2));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -386,6 +382,10 @@ html.fig-bg div.slide-background.present {
 
 .reveal .blue {
     color: var(--my_blue);
+}
+
+.reveal .lightblue {
+    color: var(--my_lightblue);
 }
 
 .reveal .green {
@@ -491,7 +491,7 @@ html.fig-bg div.slide-background.present {
 }
 
 .reveal .muted {
-    opacity: 0.5;
+    opacity: 0.6;
 }
 
 .reveal code {
@@ -577,6 +577,7 @@ html.fig-bg div.slide-background.present {
 
 
 
+.reveal .fragment.highlight-bold,
 .reveal .fragment.highlight-emph,
 .reveal .fragment.highlight-perfgreen,
 .reveal .fragment.highlight-current-perfgreen,
@@ -586,20 +587,30 @@ html.fig-bg div.slide-background.present {
     visibility: inherit;
 }
 
+.reveal .fragment.highlight-bold {
+    font-weight: normal;
+    opacity: 70%;
+}
+
 /*.reveal .fragment.highlight-emph.visible {*/
-    /*background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));*/
-    /*background-clip: text;*/
-    /*-webkit-background-clip: text;*/
-    /*-webkit-text-fill-color: transparent;*/
-    /*font-weight: bold;*/
+/*background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));*/
+/*background-clip: text;*/
+/*-webkit-background-clip: text;*/
+/*-webkit-text-fill-color: transparent;*/
+/*font-weight: bold;*/
 /*}*/
 
 .reveal .fragment.highlight-emph.current-fragment {
-    background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
+    background: linear-gradient(90deg, var(--gradient_1), var(--gradient_2));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
+}
+
+.reveal .fragment.highlight-bold.current-fragment {
+    font-weight: bold;
+    opacity: 100%;
 }
 
 .reveal .fragment.highlight-safeblue.visible {
