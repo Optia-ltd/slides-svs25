@@ -28,9 +28,19 @@ $headingTextShadow: none;
 $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;
 $headingFontWeight: 600;
-$linkColor: #e80754;
-$linkColorHover: lighten( $linkColor, 15% );
-$selectionBackgroundColor: lighten( $linkColor, 25% );
+$logo-dark: #063a82;
+$logo-light: #97c1fbff;
+$logo-accent: #e80754;
+
+$theme-colors: (
+  "blue": lighten($logo-dark, 30%),
+  "lightblue": $logo-light,
+  "magenta": $logo-accent,
+);
+
+$linkColor: $logo-light;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
 
 $heading1Size: 2.5em;
 $heading2Size: 1.6em;
@@ -40,6 +50,30 @@ $heading4Size: 1.0em;
 // Change text colors against dark slide backgrounds
 @include light-bg-text-color(#063a82);
 
+linearGradient#linearGradient372817>stop {
+  stop-color: $logo-dark;
+}
+
+linearGradient#light>stop {
+  stop-color: $logo-dark;
+}
+
+linearGradient#dark>stop {
+  stop-color: $logo-light;
+}
+
+linearGradient#medium>stop {
+  stop-color: $logo-accent;
+}
+
+linearGradient#bg-circle>stop {
+  stop-color: $logo-light;
+}
+
+
+box-icon {
+  fill: $logo-accent;
+}
 
 // Theme template ------------------------------
 @import "../template/theme";

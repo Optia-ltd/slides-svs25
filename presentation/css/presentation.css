@@ -1,39 +1,18 @@
-/**
- * The MECO presentation theme, based on the KUL theme.
- *
- * This stylesheet consists of the following parts:
- *  - Color definitions
- *  - Font definitions
- *  - Adaptations to reveal.js/kul-styles
- *  - Additional styles
- *
- * Guidelines to keep this nice:
- *  - no tabs, but two whitespace characters
- *  - add a few words before every style tag to explain its use
- *  - put styles in the correct part (as indicated above)
- *  - closing tags get a new line, please
- *  - for the rest see the existent code
- *
- * Copyright (C) 2016-2017  Armin Steinhauser
- */
-
-/* COLOR DEFINITIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
-
-/* These are the official KUL colors, see KUL style guide. */
 :root {
     --bck_opacity: 0.15;
     --bck_opacity_high: 0.05;
-    --my_blue: rgb(25, 94, 175);
-    --my_red: rgb(217, 26, 40);
-    --my_orange: rgb(236, 70, 19);
-    --my_purple: rgb(70, 10, 123);
-    --my_green: rgb(117, 162, 54);
-    --my_lightgreen: rgb(182, 233, 116);
-    --my_lightblue: rgb(117, 170, 235);
-    --my_lightgray: rgb(180, 180, 180);
-    --my_lightmgnt: rgb(236, 139, 207);
-    --my_gray: rgb(54, 54, 54);
-    --tv_color: brown;
+    --tv_color: brown --my_blue: var(--r-theme-blue, rgb(25, 94, 175));
+    --my_blue: var(--r-theme-blue, rgb(217, 26, 40));
+    --my_red: var(--r-theme-red, rgb(217, 26, 40));
+    --my_orange: var(--r-theme-orange, rgb(236, 70, 19));
+    --my_purple: var(--r-theme-purple, rgb(70, 10, 123));
+    --my_green: var(--r-theme-green, rgb(117, 162, 54));
+    --my_lightgreen: var(--r-theme-lightgreen, rgb(182, 233, 116));
+    --my_lightblue: var(--r-theme-lightblue, rgb(117, 170, 235));
+    --my_lightgray: var(--r-theme-lightgray, rgb(180, 180, 180));
+    --my_lightmagenta: var(--r-theme-lightmagenta, rgb(236, 139, 207));
+    --my_gray: var(--r-theme-gray, rgb(54, 54, 54));
+    ;
     --cadrocolor: var(--my_blue);
     --accent-color: var(--r-link-color);
 }
@@ -243,6 +222,14 @@ hr {
     font-size: smaller;
 }
 
+.large {
+    font-size: large;
+}
+
+.x-large {
+    font-size: x-large;
+}
+
 .larger {
     font-size: larger;
 }
@@ -391,6 +378,7 @@ html.fig-bg div.slide-background.present {
 
 .reveal .emph {
     background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
@@ -537,7 +525,7 @@ html.fig-bg div.slide-background.present {
 }
 
 .code_comment {
-    color: var(--my_lightmgnt);
+    color: var(--my_lightmagenta);
 }
 
 .code_static {
@@ -598,15 +586,17 @@ html.fig-bg div.slide-background.present {
     visibility: inherit;
 }
 
-.reveal .fragment.highlight-emph.visible {
-    background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-}
+/*.reveal .fragment.highlight-emph.visible {*/
+    /*background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));*/
+    /*background-clip: text;*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+    /*font-weight: bold;*/
+/*}*/
 
 .reveal .fragment.highlight-emph.current-fragment {
     background: linear-gradient(90deg, var(--my_blue), var(--my_lightblue));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
@@ -643,4 +633,21 @@ html.fig-bg div.slide-background.present {
 .accent {
     color: var(--accent-color);
 
+}
+
+box-icon {
+    transform: translateY(5px);
+    margin-right: 5px;
+}
+
+todo {
+    font-size: small;
+    color: red;
+    border: solid 1px;
+    padding: 2px;
+}
+
+todo::before {
+    content: "to do. ";
+    font-weight: bold;
 }

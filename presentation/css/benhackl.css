@@ -8,7 +8,6 @@
     top: 1em;
     font-size: 0.5em;
     z-index: 100;
-    color: rgba(0,0,0,0.5);
   }
   
   .reveal .header-right {
@@ -228,13 +227,6 @@
   .reveal .controls {
     color: var(--theme-secondary); 
   }
-  
-  /*********************************************
-   * PROGRESS BAR
-   *********************************************/
-  .reveal .progress {
-    background: rgba(0, 0, 0, 0.2);
-    color: var(--theme-secondary); }
   
   /*********************************************
    * PRINT BACKGROUND

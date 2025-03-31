@@ -8,6 +8,30 @@ section.has-light-background, section.has-light-background h1, section.has-light
   color: #063a82;
 }
 
+linearGradient#linearGradient372817 > stop {
+  stop-color: #063a82;
+}
+
+linearGradient#light > stop {
+  stop-color: #063a82;
+}
+
+linearGradient#dark > stop {
+  stop-color: #97c1fb;
+}
+
+linearGradient#medium > stop {
+  stop-color: #e80754;
+}
+
+linearGradient#bg-circle > stop {
+  stop-color: #97c1fb;
+}
+
+box-icon {
+  fill: #e80754;
+}
+
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -31,11 +55,14 @@ section.has-light-background, section.has-light-background h1, section.has-light
   --r-heading3-size: 1.3em;
   --r-heading4-size: 1em;
   --r-code-font: monospace;
-  --r-link-color: #e80754;
-  --r-link-color-dark: rgb(157.7405857741, 4.7594142259, 57.1129707113);
-  --r-link-color-hover: rgb(249.3033472803, 66.1966527197, 128.859832636);
-  --r-selection-background-color: rgb(250.7970711297, 115.7029288703, 161.9351464435);
+  --r-link-color: #97c1fb;
+  --r-link-color-dark: rgb(77.3333333333, 149.0833333333, 248.1666666667);
+  --r-link-color-hover: rgb(224.6666666667, 236.9166666667, 253.8333333333);
+  --r-selection-background-color: white;
   --r-selection-color: #fff;
+  --r-theme-blue: rgb(43.75, 128.25, 245.25);
+  --r-theme-lightblue: #97c1fb;
+  --r-theme-magenta: #e80754;
 }
 
 .reveal-viewport {
