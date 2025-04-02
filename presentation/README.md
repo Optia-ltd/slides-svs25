@@ -30,8 +30,3 @@ if you defined a placeholder `<span id="foo"></span>` somewhere in your slide,
 it would get rendered as `<span id="foo">bar</span>`.
 
 
-
-
-
-
-

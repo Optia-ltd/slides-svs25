@@ -28,17 +28,18 @@
         <div class="header-right">
             <em id="author"></em> &bullet; <span id="date"></span>
         </div>
-        <div id="logo-container"><img width="150px" src="assets/img/logo_dark_export.svg"></div>
+        <div id="logo-container"><img style="width: 50%;" src="assets/img/logo_dark_export.svg" /></div>
         <!--//HEADERS -->
 
         <!---------------------------SLIDES---------------------------------->
         <div class="slides">
             <!------------------------------SLIDES-------------------------------->
-            <section data-external="contents/title.html" data-auto-animate></section>
-            <section class="animate-logo" data-external="contents/about.html" data-auto-animate></section>
-            <section data-external="contents/toc.html" data-auto-animate></section>
+            <section data-state="titleslide" data-external="contents/title.html" data-auto-animate></section>
+            <section data-state="no-logo" class="animate-logo" data-external="contents/about.html" data-auto-animate>
+            </section>
+            <section data-external="contents/toc.html" data-state="plotly" data-auto-animate></section>
             <section data-external="contents/optimization.html" data-auto-animate></section>
-            <section data-external="contents/mixture-optimization.html" data-auto-animate></section>
+            <section class="chart" data-external="contents/mixture-optimization.html" data-auto-animate></section>
             <section data-external="contents/example-concrete.html"></section>
             <section data-external="contents/next-steps.html" data-auto-animate></section>
         </div>
@@ -61,6 +62,7 @@
                 transition: 'fade', // none/fade/slide/convex/concave/zoom
                 transitionSpeed: 'fast', // default/fast/slow
                 navigationMode: 'linear',
+                autoPlayMedia: true,
                 mathjax3: {
                     mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
                     loader: {load: ['[tex]/textmacros']},
@@ -93,6 +95,7 @@
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="js/custom_addons/animate_logo.js"></script>
         <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+        <!--<script src="js/plotly-3.0.1.min.js"></script>-->
 
         <!--<script> -->
         <!--    // utility function that excepts a fragmentshown or fragmenthidden event and returns a boolean indicating whether or not-->

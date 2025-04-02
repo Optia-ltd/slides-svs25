@@ -39,6 +39,7 @@ $theme-colors: (
   "gradient2": $logo-light,
   "gradient1": $blue,
   "accent": $logo-accent,
+  "gray": desaturate($logo-light, 50%),
 );
 
 $linkColor: $logo-light;

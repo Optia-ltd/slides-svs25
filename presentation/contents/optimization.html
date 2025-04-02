@@ -1,11 +1,182 @@
-<h1>Optimization</h1>
+<section data-auto-animate>
+    <h2>What is <span class="rmrk">mathematical</span> optimization?</h2>
+    <center>
+        <div data-id="heading" class="">
+            <div class="callout smaller fragment r-stack" style="width:80%;" data-fragment-index="1">
+                <span class="fragment fade-out" data-fragment-index="2">
+                    The <span class="emph">theory</span> and <span class="emph">algorithms</span> involved in
+                    <b>automated decision-making</b>.
+                </span>
+                <span class="fragment fade-in" data-id="subline" data-fragment-index="2">
+                    The technology <span class="emph">at the core</span> of almost all sophisticated <b>autonomous
+                        systems</b>
+                </span>
+            </div>
+        </div>
+    </center>
+    <div class="footnote fragment" data-fragment-index="2">If you consider something to be AI, it's probably running
+        optimization under the
+        hood!</div>
+</section>
 
-\[ 
-\minimize_{x \in X} f(x)
-\]
+<section data-auto-animate>
+    <h2>What is <span class="rmrk">mathematical</span> optimization?</h2>
+    <center>
+        <div data-id="heading" class="">
+            <div class="callout smaller" style="width:80%;">
+                <span data-id="subline">
+                    The technology <span class="emph">at the core</span> of almost all sophisticated <b>autonomous
+                        systems</b>
+                </span>
+            </div>
+        </div>
+    </center>
+    <hr>
+    <center>
+        <div class="r-stack">
+            <div class="fragment fade-out" data-fragment-index="1">
+                <div class="columns">
+                    <div class="col-reg">
+                        <video data-autoplay autoplay muted loop src="assets/videos/atlas-mpc.mov"></video>
+                    </div>
+                    <div class="col-reg">
+                        <video data-autoplay autoplay muted loop src="assets/videos/drone.mp4"></video>
+                    </div>
+                    <div class="col-reg">
+                        <video data-autoplay autoplay muted loop src="assets/videos/parking.mp4"></video>
+                    </div>
+                </div>
+                <span class="smaller"><span class="emph">Robotics and control</span> systems solve an optimization
+                    problem
+                    every
+                    few ms to plan next actions.
+                </span>
+            </div>
+            <div class="fragment fade-in-then-out" data-fragment-index="1">
+                <div class="columns">
+                    <div class="col-reg">
+                        <video data-autoplay muted loop src="assets/videos/machine-learning.mov"></video>
+                    </div>
+                    <div class="col-reg">
+                        <img width="200px" src="assets/img/doe.png" />
+                    </div>
+                </div>
+                <span class="smaller">Training <span class="keyword">neural networks</span>, <span
+                        class="keyword">Design of Experiments</span>, and many
+                    others methods in <span class="emph">machine learning & statistics</span> boil down to solving an
+                    optimization problem.
+                </span>
+            </div>
+            <div class="fragment fade-in-then-out" data-fragment-index="2">
+                <div class="columns">
+                    <div class="col-reg">
+                        <img src="assets/img/binpacking.svg" />
+                    </div>
+                    <div class="col-reg">
+                        <img src="assets/img/airfoil2.gif" />
+                    </div>
+                    <div class="col-reg">
+                        ...
+                    </div>
+                </div>
+                <span class="smaller">
+                    <span class="emph">And much more:</span> Optimal packing, inventory management, engineering
+                    design, ...
+                </span>
+            </div>
+    </center>
+    <div class="footnote fragment fade-in-then-out" data-fragment-index="1">Neural network animation: 3Blue1Brown</div>
+</section>
 
-<div>
-<todo>
-How to specify this, just give examples? Specify data-driven optimization?
-</todo>
-</div>
+<section data-auto-animate>
+    <h2>What makes an optimization algorithm?</h2>
+
+    <div class="columns">
+        <div class="col-reg">
+            <div class="callout small text-center" data-title="formalism">
+                <center>
+                $
+                \displaystyle \minimize_{x \in X} f(x)
+                $
+                </center>
+            </div>
+        </div>
+
+        <div class="col-reg">
+            <iframe data-src="d3-figs/surface-plot.html" data-preload
+                style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+    <div class="small">
+        <b><span class="emph">Three</span> main ingredients</b><br>
+        <table class="smaller">
+            <thead>
+                <td>
+                    Ingredient
+                </td>
+                <td>
+                    Description
+                </td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="emph">Decision variables</span> $x$
+                    </td>
+                    <td>
+                        The things we can control<br>
+                        <span class="rmrk">
+                            e.g., control signals, mixture components, model parameters, ...
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="emph">Constraints</span> $X$
+                    </td>
+                    <td>
+                        A candidate solution $x$ is only
+                        valid
+                        if $x \in X$<br>
+                        <span class="rmrk">
+                            e.g., actuator limits, safety constraint, physical laws, ...
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="emph">Cost</span>/<span class="emph">Objective function</span> $f$
+                    </td>
+                    <td>
+                        Takes a solution $x$ and returns a number &mdash; lower is better<br>
+                        <span class="rmrk">
+                            e.g.,
+                            Energy consumption, system performance, monetary cost, ...
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <b><span class="emph">Two</span> key challenges</b><br>
+        <div class="columns">
+            <div class="col-reg">
+                <div class="callout smaller" style="width: 90%;" data-title="Modeling">
+                    <b class="keyword">How to define $x, f, X$?</b>
+                    <ul class="smaller">
+                        <li> Do we have formulas, simulators, data?
+                        <li> May involve machine learning <span class="rmrk">another optimization problem!</span>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-reg">
+                <div class="callout smaller" style="width: 90%;" data-title="Solving">
+                    <b class="keyword">How to compute the solution numerically?</b>
+                    <ul class="smaller">
+                        <li> How much time available? <span class="rmrk">milliseconds &rarr; days</span>
+                        <li> How much precision required?
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+</section>

@@ -66,6 +66,7 @@ box-icon {
   --r-theme-gradient2: #97c1fb;
   --r-theme-gradient1: rgb(43.75, 128.25, 245.25);
   --r-theme-accent: #e80754;
+  --r-theme-gray: rgb(178, 197.32, 224);
 }
 
 .reveal-viewport {
