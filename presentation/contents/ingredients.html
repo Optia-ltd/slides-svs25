@@ -1,0 +1,97 @@
+<section data-auto-animate>
+    <h2>What makes an optimization algorithm?</h2>
+</section>
+
+<section data-auto-animate>
+    <h2>What makes an optimization algorithm?</h2>
+    <div class="columns">
+        <div class="col-reg">
+            <div class="callout small text-center" data-title="formalism">
+                <center>
+                    $
+                    \displaystyle \minimize_{x \in X} f(x)
+                    $
+                </center>
+            </div>
+        </div>
+
+        <div class="col-small">
+            <iframe data-src="d3-figs/surface-plot.html" data-preload
+                style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </div>
+    <div class="small">
+        <div class="fragment">
+            <b><span class="emph">Three</span> main ingredients</b><br>
+            <table class="smaller">
+                <thead>
+                    <td>
+                        Ingredient
+                    </td>
+                    <td>
+                        Description
+                    </td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="emph">Decision variables</span> $x$
+                        </td>
+                        <td>
+                            The things we can control<br>
+                            <span class="rmrk">
+                                e.g., control signals, mixture components, model parameters, ...
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="emph">Constraints</span> $X$
+                        </td>
+                        <td>
+                            A candidate solutions $x$ that are acceptable
+                            <span class="rmrk">
+                                e.g., actuator limits, safety constraint, physical laws, ...
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="emph">Cost</span>/<span class="emph">Objective function</span> $f$
+                        </td>
+                        <td>
+                            Takes a solution $x$ and returns a number &mdash; lower is better<br>
+                            <span class="rmrk">
+                                e.g.,
+                                Energy consumption, system performance, monetary cost, ...
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="fragment">
+            <b><span class="emph">Two</span> key challenges</b><br>
+            <div class="columns">
+                <div class="col-reg">
+                    <div class="challenge smaller" style="width: 90%;" data-title="Modeling">
+                        <b class="keyword">How to define $x, f, X$?</b>
+                        <ul class="smaller">
+                            <li> Do we have formulas, simulators, data?
+                            <li> May involve machine learning <span class="rmrk">another optimization problem!</span>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-reg">
+                    <div class="challenge smaller" style="width: 90%;" data-title="Solving">
+                        <b class="keyword">How to compute the solution numerically?</b>
+                        <ul class="smaller">
+                            <li> How much time available? <span class="rmrk">milliseconds &rarr; days</span>
+                            <li> How much precision required?
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>

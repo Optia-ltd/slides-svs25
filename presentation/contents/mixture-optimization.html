@@ -1,13 +1,147 @@
-<h3>Mixture design</h3>
+<section data-auto-animate>
+    <div data-id="title-container">
+        <div class="larger" data-id="titt">
+            <span class="emph larger" data-id="cs">Case study</span> &mdash; Concrete mixture design<br>
+        </div>
+    </div>
+    <div>
+        Let's apply this in practice.
+    </div>
+</section>
 
-<div class="columns">
-    <div class="col-reg">
+<section data-auto-animate">
+    <div data-id="title-container">
+        <div class="larger" data-id="titt">
+            <span class="emph larger" data-id="cs">Case study</span> &mdash; Concrete mixture design<br>
+        </div>
+    </div>
+    <div class="callout small fragment" data-title="Concrete mixture problem">
+        Find the weight fractions
+        $x_1, \dots, x_n$ of the mixture components
+        to
+        <br>
+        <span class="emph">Minimize</span>
+        <br>
         <ul>
-            <li> Decision variable $x \in \simplex$
-            <li> 
+            <li> CO<sub>2</sub> equivalents, monetary cost
+                <span class="rmrk">scalarize by taking weighted sum</span>
+        </ul>
+        <br>
+        <span class="emph">while</span>
+        <br>
+        <ul>
+            <li> Compressive strength
+                of the concrete
+                <span class="rmrk">at 3, 7 and 28 days</span>
+                are above specified limits.
         </ul>
     </div>
-    <div class="col-reg">
-        <todo>Add a figure</todo>
+    <div class="challenge small fragment" data-title="Challenges">
+        <ul>
+            <li>How to predict <span class="emph">compressive strength</span>
+                as a function of <span class="emph">the composition</span> $x$?
+            <li>How to find the best mixture, taking into account our <span class="emph">imperfect predictions</span>?
+        </ul>
     </div>
-</div>
+    <todo>Insert animation</todo>
+</section>
+
+<section>
+    <div data-id="title-container">
+        <div class="larger" data-id="titt">
+            <div class="squeezed"><span class="emph larger" data-id="cs">Case study</span> &mdash; Concrete mixture
+                design</div>
+            <div class="rmrk" style="transform:translateY(-5pt);">Gray-Box model</div>
+        </div>
+        $\newcommand{\ci}{\textcolor{var(--my_magenta)}{i}}
+        \newcommand{\ctheta}{\textcolor{var(--my_green)}{\theta}}
+        \newcommand{\cL}{\textcolor{var(--my_lightblue)}{L}}
+        \newcommand{\cy}{\textcolor{var(--my_blue)}{y}}
+        \newcommand{\cx}{\textcolor{var(--my_lightblue)}{x}}
+        \newcommand{\ca}{\textcolor{var(--my_orange)}{\alpha}}
+        $
+
+        <div class="fragment fade-out" data-fragment-index="4">
+            <div class="smaller" data-title="Regression problem">
+                <div class="fragment" data-fragment-index="0">
+                    <b>Given: </b>$m$ examples
+                    $(\cx^{(\ci)}, \cy^{(\ci)})$
+                    of <span style="color: var(--my_lightblue);">mixtures</span> with corresponding
+                    <span style="color: var(--my_blue);">compressive strengths</span>
+                    <span class="rmrk">3, 7, 28 days</span>.
+                    <!--<br><br>-->
+                    <!--Parametrized prediction model $\cy(\cx, \ctheta)$-->
+                </div>
+                <br>
+                <div class="fragment" data-fragment-index="1">
+                    <b>Task: </b>Fit a model $\cy(\cx, \ctheta)$, satisfying
+                    some sanity checks for all possible mixtures:
+                </div>
+                <div class="r-stack">
+                    <div class="callout fragment fade-in-then-out" data-title="Regression problem"
+                        data-fragment-index="2">
+                        \[
+                        \begin{aligned}
+                        \minimize_{
+                        {\ctheta}
+                        }&\;
+                        \sum_{
+                        \ci=1}^{m}
+                        \nrm{
+                        \cy(
+                        \cx^{(\ci)}, \ctheta) - \cy^{(\ci)})}_2^2\\
+                        \st&\; \cy_{28}(\cx, \ctheta) \geq (1 + \ca) \cy_{7}(\cx, \ctheta), \quad \forall \cx \in X \\
+                        &\; \cy_{7}(\cx, \ctheta) \geq (1 + \ca) \cy_{3}(\cx, \ctheta), \quad \forall \cx \in X.
+                        \end{aligned}
+                        \]
+                        $\ctheta$: model parameters<br>
+                        $\ca$: minimum percentage by which the strengths should increase.
+                    </div>
+
+                    <div class="fragment fade-in-then-out" data-fragment-index="3">
+                        <div class="callout" data-title="Results">
+                            <div class="columns spaced">
+                                <div class="col-reg">
+                                    <img src="assets/img/figs_article/svg/fit_quality_hardened3.svg">
+                                </div>
+                                <div class="col-reg">
+                                    <img src="assets/img/figs_article/svg/fit_quality_hardened7.svg">
+                                </div>
+                                <div class="col-reg">
+                                    <img src="assets/img/figs_article/svg/fit_quality_hardened28.svg">
+                                </div>
+                            </div>
+                            <center>
+                                MSE: ~7%, MAE: ~20% on test data.
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
+
+<section>
+    <div data-id="title-container">
+        <div class="larger" data-id="titt">
+            <div class="squeezed"><span class="emph larger" data-id="cs">Case study</span> &mdash; Concrete mixture
+                design</div>
+            <div class="rmrk" style="transform:translateY(-5pt);">Optimization</div>
+        </div>
+    </div>
+    <div class="r-stack">
+        <todo>ADD THE optiimzation problem</todo>
+    </div>
+    <div class="fragment" data-fragment-index="1">
+        <div class="columns">
+            <div class="col-reg">
+                <img src="assets/img/figs_article/svg/best_in_dataset.svg">
+            </div>
+            <div class="col-reg">
+                <img src="assets/img/figs_article/svg/optimal.svg">
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</section>
