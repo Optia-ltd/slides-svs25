@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <script src="../js/mathjax_macros.js"></script>
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                macros: texMacros,
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <script src="../js/plotly-3.0.1.min.js"></script>
+    <style src="../css/presentation.css"></style>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            /* Prevent scrolling */
+        }
+
+        #surface_plot {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="surface_plot"></div>
+    <script>
+        console.log("HALLO!");
+        var rotationAngle = 0.4;
+        const dataCfg = {
+            showscale: false,
+            hoverinfo: 'none',
+            opacity: 1
+        };
+
+        const colors = {
+            logo_dark: "#063a82",
+            logo_accent: "#e80754",
+            logo_light: "#97c1fb",
+        };
+
+        const plotlyCfg = {
+            displayModeBar: false, // this is the line that hides the bar.
+            showscale: false,
+            scrollZoom: false,
+            dragMode: false,
+        };
+
+
+        let mainColor = window.getComputedStyle(document.body).getPropertyValue('--r-main-color');
+
+
+        const axisCfg = {
+            ticktext: [],
+            tickvals: [],
+            showspikes: false,
+            title: "",
+            //backgroundcolor: "rgb(200, 200, 200)",
+            //showbackground: true,
+            zeroline: false,
+            fixedrange: true,
+            //linecolor: "white",
+            visible: false,
+        };
+
+        const baseLayout = {
+            autosize: true,
+            //width: 480,
+            //height: "10%",
+            autoexpand: true,
+            margin: {
+                l: 0,
+                r: 0,
+                b: 0,
+                t: 25,
+                pad: 0,
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            showlegend: false,
+            hovermode: false,
+            scene: {
+                hovermode: false,
+                //dragmode: false,
+                colorbar: {
+                    visible: false  // Set colorbar visibility to false
+                },
+                xaxis: axisCfg,
+                yaxis: axisCfg,
+                zaxis: axisCfg
+            },
+        };
+        function linspace(start, end, steps) {
+            const stepSize = (end - start) / (steps - 1);
+            const result = [];
+
+            for (let i = 0; i < steps; i++) {
+                result.push(start + i * stepSize);
+            }
+
+            return result;
+        }
+
+        let y_range = linspace(-1, 1, 20);
+        let x_range = linspace(-1, 1, 20);
+
+        var z_data = [];
+        for (let y of y_range) {
+            let col = x_range.map((x) => y * y + x * x);
+            z_data.push(col);
+        }
+
+
+
+        let colorscale = [
+            ['0', '#063a82'],
+            ['0.3', '#063a82'],
+            ['1', '#97c1fb'],
+            //['1', '#063c85'],
+            //['1', '#073bfc'],
+            //['1', 'rgb(232, 7, 84)'] 
+            //$logo-dark: #063a82;
+            //$logo-accent: #e80754;
+            //$logo-light: #97c1fb;
+        ]
+        var commonContourOption = {highlight: false}
+
+        var contour = {
+            x: commonContourOption,
+            y: commonContourOption,
+            z: commonContourOption
+        }
+
+        let anilayout = getNewLayout();
+
+        var layout = {
+            ...baseLayout,
+            ...anilayout,
+            scrollZoom: false
+        };
+
+        const config = {
+            displayModeBar: false, // this is the line that hides the bar.
+            showscale: false,
+            scrollZoom: false,
+            dragMode: false,
+            responsive: true,
+            context: {
+                willReadFrequently: true // Optimize canvas reading
+            }
+        };
+
+        var data = [{
+            z: z_data,
+            type: 'surface',
+            colorscale: colorscale,
+            contours: contour,
+            ...dataCfg
+        }]
+
+        function getNewLayout(x = null, y = null, z = null) {
+            const eyeX = x == null ? Math.cos(rotationAngle) * 1.2 : x;
+            const eyeY = y == null ? Math.sin(rotationAngle) * 1.2 : y;
+            const eyeZ = z == null ? 1.0 : z;
+
+            const centerX = 0;
+            const centerY = 0;
+            const centerZ = 0;
+
+            return {
+                'scene.camera.eye': {x: eyeX, y: eyeY, z: eyeZ},
+                'scene.camera.center': {x: centerX, y: centerY, z: centerZ},
+            };
+        }
+
+        Plotly.newPlot('surface_plot', data, layout, config);
+        var rotationParams = {};
+        rotationParams.speed = 0.005;
+        rotationParams.framesPerSecond = 20;
+        rotationParams.running = true;
+        rotationInterval = setInterval(() => {
+            // Update camera position based on angle
+            layoutUpdate = getNewLayout();
+            // Update plot layout with new camera settings
+            Plotly.relayout('surface_plot', layoutUpdate);
+
+            // Increment angle for next frame
+            rotationAngle += rotationParams.speed;
+            rotationAngle %= 2 * Math.PI;
+        }, 1000 / rotationParams.framesPerSecond);
+        rotationParams.running = true
+
+    </script>
+</body>
