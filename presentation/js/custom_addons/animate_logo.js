@@ -3,30 +3,16 @@
 Reveal.on('slidechanged', (event) => {
     let timeline = animate_logo();
     if (event.currentSlide.classList.contains("animate-logo")) {
-        timeline.seek(0)
         timeline.play()
     } else {
-        console.log("REVERTING")
+        timeline.stop()
     }
 });
-
-var original = false;
-
-function reset_logo() {
-    if (original) {
-        console.log(original);
-        // Clear current drawing
-        original
-    }
-}
 
 function animate_logo() {
 
     let drawing = SVG("#optia-logo")
     let timeline = new SVG.Timeline()
-    if (!original) {
-        original = drawing.clone();
-    }
     // Start times of animations in milliseconds
     var endDotStart = 300
     var iDotStart = 1100
