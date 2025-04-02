@@ -113,8 +113,7 @@
     right: 50%;
     bottom: 1%;
     padding: 0px;
-    color: rgba(0, 0, 0, 0.7);
-    background-color: rgba(0, 0, 0, 0);
+    opacity: 0.5;
 }
 
 .reveal table tr.fragment:not(.visible) td {
@@ -280,6 +279,11 @@ hr {
 }
 
 .reveal ul.squashed li {
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+
+.reveal .squeezed {
     margin-top: 0em;
     margin-bottom: 0em;
 }
