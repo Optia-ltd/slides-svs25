@@ -57,8 +57,8 @@ box-icon {
   --r-code-font: monospace;
   --r-link-color: #97c1fb;
   --r-link-color-dark: rgb(77.3333333333, 149.0833333333, 248.1666666667);
-  --r-link-color-hover: rgb(224.6666666667, 236.9166666667, 253.8333333333);
-  --r-selection-background-color: white;
+  --r-link-color-hover: rgb(113.4, 232.8, 243.6);
+  --r-selection-background-color: #FF5E99;
   --r-selection-color: #fff;
   --r-theme-blue: rgb(43.75, 128.25, 245.25);
   --r-theme-lightblue: #97c1fb;

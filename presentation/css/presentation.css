@@ -247,13 +247,17 @@ hr {
     display: none;
 }
 
+.no-logo #logo-container { 
+    opacity: 0;
+}
+
 /* Element containing the KUL logo */
 #logo-container {
     position: absolute;
     bottom: 0.5%;
     left: 1%;
     right: 85%;
-
+    transition: opacity 1s ease-in;
     /*bottom: 3%;*/
     /*left: 0%;*/
 }
@@ -493,7 +497,7 @@ html.fig-bg div.slide-background.present {
 }
 
 .reveal .muted {
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
 .reveal code {

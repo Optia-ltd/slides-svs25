@@ -1,9 +1,11 @@
-.reveal .titleslide .header-left {
-    display: none;
+.titleslide .header-left,
+.titleslide .header-right {
+    opacity: 0% !important;
 }
 
 .reveal .header-left,
 .reveal .header-right {
+    transition: opacity 1s ease-in;
     position: absolute;
     font-size: 0.7em;
     z-index: 100;
