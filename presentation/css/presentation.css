@@ -252,6 +252,8 @@ hr {
     position: absolute;
     bottom: 0.5%;
     left: 1%;
+    right: 85%;
+
     /*bottom: 3%;*/
     /*left: 0%;*/
 }
