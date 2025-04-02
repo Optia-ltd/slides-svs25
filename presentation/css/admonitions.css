@@ -66,10 +66,24 @@ body {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
+.reveal .challenge {
+    background: linear-gradient(30deg, rgba(255, 70, 90, 0.2), rgba(200, 60, 80, 0.05));
+    margin-top: 10px;
+    padding: 20px 20px;
+    padding-top: 20px;
+    /*margin: auto;*/
+    border-radius: 15px;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.reveal .challenge[data-title],
 .reveal .callout[data-title] {
     padding-top: 40px;
 }
 
+
+.reveal .challenge[data-title]::before,
 .reveal .callout[data-title]::before {
     content: attr(data-title);
     height: 20px;
@@ -81,6 +95,7 @@ body {
     top: 0.6em;
     left: 1em;
 }
+
 
 .reveal .example-box {
     background: linear-gradient(30deg, rgba(0, 183, 194, 0.05), rgba(78, 240, 55, 0.05));
@@ -111,6 +126,7 @@ body {
     content: "Example • " attr(data-title);
 }
 
+
 .reveal .emphasis-box:before {
     content: attr(data-title);
     background-color: var(--background-tertiary);
@@ -125,6 +141,10 @@ body {
     height: 50px;
     line-height: 50px;
     text-indent: 10px;
+}
+
+.reveal .challenge {
+
 }
 
 .note {
