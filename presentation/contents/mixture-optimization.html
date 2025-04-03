@@ -61,18 +61,18 @@
         \newcommand{\ca}{\textcolor{var(--my_orange)}{\alpha}}
         $
 
-        <div class="fragment fade-out" data-fragment-index="4">
+        <div>
             <div class="smaller" data-title="Regression problem">
                 <div class="fragment" data-fragment-index="0">
                     <b>Given: </b>$m$ examples
                     $(\cx^{(\ci)}, \cy^{(\ci)})$
                     of <span style="color: var(--my_lightblue);">mixtures</span> with corresponding
                     <span style="color: var(--my_blue);">compressive strengths</span>
-                    <span class="rmrk">3, 7, 28 days</span>.
+                    <span class="rmrk">3, 7, 28 days</span><sup>1</sup>.
                     <!--<br><br>-->
                     <!--Parametrized prediction model $\cy(\cx, \ctheta)$-->
                 </div>
-                <br>
+                <!--<br>-->
                 <div class="fragment" data-fragment-index="1">
                     <b>Task: </b>Fit a model $\cy(\cx, \ctheta)$, satisfying
                     some sanity checks for all possible mixtures:
@@ -95,9 +95,9 @@
                         \end{aligned}
                         \]
                         $\ctheta$: model parameters<br>
-                        $\ca$: minimum percentage by which the strengths should increase.
+                        $\ca$: minimum percentage by which the strengths should increase <span class="rmrk">selected by
+                            user</span>
                     </div>
-
                     <div class="fragment fade-in-then-out" data-fragment-index="3">
                         <div class="callout" data-title="Results">
                             <div class="columns spaced">
@@ -116,7 +116,30 @@
                             </center>
                         </div>
                     </div>
+                    <!--<div class="fragment fade-in-then-out" data-fragment-index="4">-->
+                    <!--    <div class="callout" data-title="Results">-->
+                    <!--        <div class="columns spaced">-->
+                    <!--            <div class="col-reg">-->
+                    <!--                <img src="assets/img/figs_article/svg/model.svg">-->
+                    <!--            </div>-->
+                    <!--            <div class="col-reg">-->
+                    <!--                <b>Interpretation</b> &bullet;-->
+                    <!--                <span class="muted">The model confirms known facts</span><br>-->
+
+                    <!--                <ul class="smaller italix">-->
+                    <!--                    <li> Strength determined by <b>water</b>/<b>cement</b> ratio-->
+                    <!--                    <li> CO<sub>2</sub> equivalents increases mostly by <b>cement</b> and-->
+                    <!--                        <b>superplasticizer</b>-->
+                    <!--                        <li> Cost determined mostly by <b>superplasticizer</b>-->
+                    <!--                </ul>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
                 </div>
+            </div>
+            <div class="footnote"><sup>1</sup>Yeh, I. (1998). Concrete Compressive Strength [Dataset]. UCI Machine
+                Learning Repository. <a href="https://doi.org/10.24432/C5PK67">https://doi.org/10.24432/C5PK67</a>.
             </div>
 </section>
 
@@ -129,19 +152,37 @@
         </div>
     </div>
     <div class="r-stack">
-        <todo>ADD THE optiimzation problem</todo>
-    </div>
-    <div class="fragment" data-fragment-index="1">
-        <div class="columns">
-            <div class="col-reg">
-                <img src="assets/img/figs_article/svg/best_in_dataset.svg">
-            </div>
-            <div class="col-reg">
-                <img src="assets/img/figs_article/svg/optimal.svg">
+        <div class="callout fragment fade-out" data-title="Example optimization problem" data-fragment-index="1">
+            Suppose $s_{\min}$ is our desired strength, and we want to minimize the emitted CO<sub>2</sub>.
+            \[
+            \newcommand{\CO}{\small\mathrm{CO}_2}
+            \minimize_{\cx \in X} \cy^\star_{\CO}(\cx) \; \st\; \cy^\star_{28}(\cx) \geq 1.2 s_{\min}
+            \]
+            where
+            $\cy_{\CO}(\cx), \cy_{28}(\cx)$ are the predictive models for $\CO$-equivalents and 28-day compr. str. <span
+                class="rmrk">obtained in the previous step</span>
+        </div>
+        <div class="fragment callout" data-fragment-index="1" data-title="Result">
+            <div class="columns">
+                <div class="col-reg">
+                    <img height="300px" src="assets/img/figs_article/svg/best_in_dataset.svg">
+                    <center class="small">
+                        <b>Measured</b> properties<br>
+                        $\cy_{28} = 20.59 \textrm{MPa}$, $\cy_{\CO} = 0.046 \textrm{kg}$
+                    </center>
+                </div>
+                <div class="col-reg">
+                    <img height="300px" src="assets/img/figs_article/svg/optimal.svg">
+                    <center class="small">
+                        <b>Predicted</b> properties<br>
+                        $\cy_{28} = 24.00 \textrm{MPa}$, $\cy_{\CO} = 0.042 \textrm{kg}$ <span class="rmrk" style="color: var(--my_green); opacity:100%;">-9%</span>
+                    </center>
+                </div>
             </div>
         </div>
+        <div class="footnote fragment fade-in-then-out" data-fragment-index="1">
+        CA: Coarse aggregate, FA: fine aggregate,
+        SP: superplasticizer, BFS: Blast Furnace Slag
+        </div>
     </div>
-    </div>
-
-
 </section>

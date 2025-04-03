@@ -53,7 +53,7 @@ body {
 }
 
 .reveal .callout {
-    background: linear-gradient(30deg, rgba(90, 110, 255, 0.2), rgba(140, 170, 80, 0.05));
+    background: linear-gradient(30deg, rgba(90, 110, 255, 0.4), rgba(140, 170, 80, 0.05));
     /*border: solid white 1px;*/
     margin-top: 10px;
     padding: 20px 20px;
@@ -67,7 +67,7 @@ body {
 }
 
 .reveal .challenge {
-    background: linear-gradient(30deg, rgba(255, 70, 90, 0.2), rgba(200, 60, 80, 0.05));
+    background: linear-gradient(30deg, rgba(255, 70, 90, 0.4), rgba(200, 60, 80, 0.05));
     margin-top: 10px;
     padding: 20px 20px;
     padding-top: 20px;
