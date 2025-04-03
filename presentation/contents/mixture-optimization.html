@@ -15,26 +15,38 @@
             <span class="emph larger" data-id="cs">Case study</span> &mdash; Concrete mixture design<br>
         </div>
     </div>
-    <div class="callout small fragment" data-title="Concrete mixture problem">
-        Find the weight fractions
-        $x_1, \dots, x_n$ of the mixture components
-        to
-        <br>
-        <span class="emph">Minimize</span>
-        <br>
-        <ul>
-            <li> CO<sub>2</sub> equivalents, monetary cost
-                <span class="rmrk">scalarize by taking weighted sum</span>
-        </ul>
-        <br>
-        <span class="emph">while</span>
-        <br>
-        <ul>
-            <li> Compressive strength
-                of the concrete
-                <span class="rmrk">at 3, 7 and 28 days</span>
-                are above specified limits.
-        </ul>
+
+    <div class="columns">
+        <div class="col-reg">
+            <div class="callout small" data-title="Concrete mixture problem">
+                Find the weight fractions
+                $x_1, \dots, x_n$ of the mixture components
+                to
+                <br>
+                <span class="emph">Minimize</span>
+                <br>
+                <ul>
+                    <li> CO<sub>2</sub> equivalents, monetary cost
+                        <span class="rmrk">scalarize by taking weighted sum</span>
+                </ul>
+                <br>
+                <span class="emph">while</span>
+                <br>
+                <ul>
+                    <li> Compressive strength
+                        of the concrete
+                        <span class="rmrk">at 3, 7 and 28 days</span>
+                        are above specified limits.
+                </ul>
+            </div>
+        </div>
+        <div class="col-small">
+            <center>
+                <iframe data-src="d3-figs/pi-chart.html" data-preload
+                    style="width: 370px; height: 230px; border: none; padding-top: 2em;"></iframe>
+                <div class="caption">Variable $x_i$ is the weight fraction of component $i$</div>
+            </center>
+        </div>
     </div>
     <div class="challenge small fragment" data-title="Challenges">
         <ul>
@@ -174,14 +186,15 @@
                     <img height="300px" src="assets/img/figs_article/svg/optimal.svg">
                     <center class="small">
                         <b>Predicted</b> properties<br>
-                        $\cy_{28} = 24.00 \textrm{MPa}$, $\cy_{\CO} = 0.042 \textrm{kg}$ <span class="rmrk" style="color: var(--my_green); opacity:100%;">-9%</span>
+                        $\cy_{28} = 24.00 \textrm{MPa}$, $\cy_{\CO} = 0.042 \textrm{kg}$ <span class="rmrk"
+                            style="color: var(--my_green); opacity:100%;">-9%</span>
                     </center>
                 </div>
             </div>
         </div>
         <div class="footnote fragment fade-in-then-out" data-fragment-index="1">
-        CA: Coarse aggregate, FA: fine aggregate,
-        SP: superplasticizer, BFS: Blast Furnace Slag
+            CA: Coarse aggregate, FA: fine aggregate,
+            SP: superplasticizer, BFS: Blast Furnace Slag
         </div>
     </div>
 </section>

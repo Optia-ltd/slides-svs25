@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        /*width: 350px;*/
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    svg {
+        fill: white;
+        width: 100%;
+        height: 100%;
+    }
+
+    path.slice {
+        stroke-width: 2px;
+        stroke: none;
+    }
+
+    polyline {
+        opacity: .3;
+        stroke: white;
+        stroke-width: 2px;
+        fill: none;
+    }
+</style>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script>
+        // Create SVG
+        const svg = d3.select("body")
+            .append("svg")
+            .append("g");
+
+        // Add groups for the various chart components
+        svg.append("g")
+            .attr("class", "slices");
+        svg.append("g")
+            .attr("class", "labels");
+        svg.append("g")
+            .attr("class", "lines");
+
+        const width = 350;
+        const height = 200;
+        const radius = Math.min(width, height) / 2;
+
+        // In v7, d3.layout.pie() becomes d3.pie()
+        const pie = d3.pie()
+            .sort(null)
+            .value(d => d.value);
+
+        // In v7, d3.svg.arc() becomes d3.arc()
+        const arc = d3.arc()
+            .outerRadius(radius * 0.8)
+            .innerRadius(radius * 0.4);
+
+        const outerArc = d3.arc()
+            .innerRadius(radius * 0.9)
+            .outerRadius(radius * 0.9);
+
+        svg.attr("transform", `translate(${width / 2},${height / 2})`);
+
+        const key = d => d.data.label;
+
+        // Custom data to match the image
+        const customColors = {
+            "CA": "#ffb366",  // Orange
+            "Fly Ash": "#b2d88b",  // Light green
+            "Water": "#ff8080",  // Red-pink
+            "BFS": "#ffffb3",  // Light yellow
+            "Cement": "#a6d8d2"   // Light blue-green
+        };
+
+        const initialData = [
+            {label: "CA", value: 45},
+            {label: "Fly Ash", value: 35},
+            {label: "Water", value: 10},
+            {label: "BFS", value: 10},
+            {label: "Cement", value: 5}
+        ];
+
+        function randomData() {
+            return initialData.map(item => {
+                // Keep the same categories but randomize values
+                return {
+                    label: item.label,
+                    value: Math.floor(Math.random() * 50) + 5 // Random value between 5 and 55
+                };
+            });
+        }
+
+        // Function to get color based on label
+        function getColor(d) {
+            return customColors[d.data.label];
+        }
+
+        function midAngle(d) {
+            return d.startAngle + (d.endAngle - d.startAngle) / 2;
+        }
+
+        // Initial chart
+        change(initialData);
+
+        // Randomize button
+        async function play() {
+            while (true) {
+                await new Promise(resolve => setTimeout(resolve, 3000))
+                change(randomData())
+            }
+        }
+
+        play()
+
+
+        function change(data) {
+            /* ------- PIE SLICES -------*/
+            const slice = svg.select(".slices").selectAll("path.slice")
+                .data(pie(data), key);
+
+            // Enter selection
+            slice.enter()
+                .insert("path")
+                .style("fill", getColor)
+                .attr("class", "slice")
+                // Merge with update selection (in v7, we explicitly merge)
+                .merge(slice)
+                .transition().duration(1000)
+                .attrTween("d", function (d) {
+                    this._current = this._current || d;
+                    const interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return t => arc(interpolate(t));
+                });
+
+            // Exit selection
+            slice.exit()
+                .remove();
+
+            /* ------- TEXT LABELS -------*/
+            const text = svg.select(".labels").selectAll("text")
+                .data(pie(data), key);
+
+            // Enter selection for text
+            text.enter()
+                .append("text")
+                .attr("dy", ".35em")
+                .text(d => d.data.label)
+                // Merge with update selection
+                .merge(text)
+                .transition().duration(1000)
+                .attrTween("transform", function (d) {
+                    this._current = this._current || d;
+                    const interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return function (t) {
+                        const d2 = interpolate(t);
+                        const pos = outerArc.centroid(d2);
+                        pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+                        return `translate(${pos})`;
+                    };
+                })
+                .styleTween("text-anchor", function (d) {
+                    this._current = this._current || d;
+                    const interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return function (t) {
+                        const d2 = interpolate(t);
+                        return midAngle(d2) < Math.PI ? "start" : "end";
+                    };
+                })
+                .style("opacity", function (d) {
+                    // Only show labels for segments that are large enough
+                    return (d.endAngle - d.startAngle) > 0.2 ? 1 : 0;
+                });
+
+            // Exit selection
+            text.exit()
+                .remove();
+
+            /* ------- SLICE TO TEXT POLYLINES -------*/
+            const polyline = svg.select(".lines").selectAll("polyline")
+                .data(pie(data), key);
+
+            // Enter selection
+            polyline.enter()
+                .append("polyline")
+                // Merge with update selection
+                .merge(polyline)
+                .transition().duration(1000)
+                .attrTween("points", function (d) {
+                    this._current = this._current || d;
+                    const interpolate = d3.interpolate(this._current, d);
+                    this._current = interpolate(0);
+                    return function (t) {
+                        const d2 = interpolate(t);
+                        const pos = outerArc.centroid(d2);
+                        pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+                        return [arc.centroid(d2), outerArc.centroid(d2), pos];
+                    };
+                })
+                .style("opacity", function (d) {
+                    // Only show lines for segments that are large enough
+                    return (d.endAngle - d.startAngle) > 0.2 ? 1 : 0;
+                });
+
+            // Exit selection
+            polyline.exit()
+                .remove();
+        }
+    </script>
+</body>
