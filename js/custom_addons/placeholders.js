@@ -55,5 +55,10 @@ async function replace_placeholders(placeholders) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => replace_placeholders(placeholder_map));
+
+Reveal.on('ready', (event) => {
+    replace_placeholders(placeholder_map)
+    // event.currentSlide, event.indexh, event.indexv
+});
+//document.addEventListener("DOMContentLoaded", () => replace_placeholders(placeholder_map));
 
